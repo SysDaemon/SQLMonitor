@@ -85,7 +85,6 @@ IF IS_SRVROLEMEMBER('sysadmin') = 0 BEGIN
         1
     )   WITH NOWAIT;
 END
--- PRINT @CMD
 
 DECLARE @RC INT;
 EXECUTE @RC = dbo.sp_executesql @statement = @CMD;
