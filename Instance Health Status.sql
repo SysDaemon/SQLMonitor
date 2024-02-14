@@ -76,6 +76,15 @@ CREATE DATABASE [Instance Health Status]
     COLLATE SQL_Latin1_General_CP1_CI_AS
 '
 
+IF IS_SRVROLEMEMBER('sysadmin') = 0 BEGIN
+    SET @ErrorMessage = 'Insuficient permission. You need to be a "SysAdmin" member to create the Database.'
+
+    RAISERROR(
+        @ErrorMessage,
+        16,
+        1
+    )   WITH NOWAIT;
+END
 -- PRINT @CMD
 
 DECLARE @RC INT;
